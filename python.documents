@@ -1,0 +1,285 @@
+Built-in Types:
+1. numerics
+	int: bit_length(), to_bytes(), from_bytes()
+	float: as_integer_ratio(), is_integer(), hex(), formhex(s)
+	complex
+2. sequences Type
+	list, tuple, dict, set, frozenset
+
+	2.1 common sequence operations
+		len(), min(), manx(), s.index(), s.count()
+		in, not in
+	2.2 mutable sequence operations
+		del s[i:j:k], s.append(), s.clear(), s.copy()
+		s.extend(object), s.insert(i, x),
+		s.pop([i]), s.remove(x), s.reverse()
+
+class list([iterable]): mutable sequences
+constructed ways:
+1) Using a pair of square brackets to denote the empty list: []
+2) Using square brackets, separating items with commas: [a], [a, b, c]
+3) Using a list comprehension: [x for x in iterable]
+4) Using the type constructor: list() or list(iterable)
+	sort(*, key = None, reverse = None): using only <
+
+class tuple([iterable]): immutable sequences
+constructed ways:
+1) Using a pair of parentheses to denote the empty tuple: ()
+2) Using a trailing comma for s singleton tuple: a, or (a,)
+3) Separating items with commas: a, b, c or (a, b, c)
+4) Using the tuple() buil-in: tuple() or tuple(iterable)
+
+class range(stop), class range(start, stop[, step]): immutable sequence
+	try
+	   if range(x) > sys.maxsize:
+		except OverflowError
+
+text squence type - str(): immutable sequence
+class str(object = ""), class str(object = '', encoding = 'utf-8', errors = 'strict')
+	object.__str__() method => str(object)
+	str.capitalize()
+	str.center(width[, fillchar])
+	str.ljust(width[, fillchar])
+	str.rjust(width[, fillchar])
+	str.zfill(width)
+	str.count(sub[,start[, end]])
+	str.encode(encoding = 'utf-8', errors = 'strict')
+
+	str.endswith(suffix[, start[, end]])
+	str.startswith(prefix[, start[, end]])
+
+	str.expandtabs(tabsize = 8)
+	str.find(sub[, star[, end]])
+	str.rfind(...)
+	str.format(*args, **kwargs)
+	str.format_map(mapping)
+	str.index(sub[, start[, end]]): like str.find, but ValueError
+	str.rindex(...)
+	str.isalnum()
+	str.isapha()
+	str.isdecimal()
+	str.isdigit()
+	str.isidentifier()
+	str.islower()
+	str.isupper()
+	str.lower()
+	str.upper()
+	str.isnumeric()
+	str.isprintable()
+	str.isspace()
+	str.istitle()
+	str.join(iterable)
+
+	str.lstrip([chars])
+	str.rstrip([chars])
+	str.partition(sep): return tuple -> ()
+	str.rpartition(...): return tuple -> ()
+
+	str.replace(old, new[, count])
+	str.rsplit(sep = None, maxsplit = -1): return list -> []
+	str.split(...): return list -> []
+	str.splitlines([keppends]): reuturn list -> []
+
+	str.swapcase(): s.swapcase().swapcase() == s
+	str.title(): 'hello world'.title == 'Hello World'
+	
+
+Binary Sequence Type - byte, bytearray, memoryview
+Bytes: immutable sequence of single bytes
+constructor ways:
+single quotes: b'hello world of python'
+double quotes: b"hello world of python"
+triple quotes: b'''hello world of python'''
+a zero-filled bytes object of a specified length: bytes(10)
+Form a iterable of integers: bytes(range(20))
+copying existing binary data via the buffer protocol: bytes(object)
+obj = bytes.fromhex(string)
+
+method:
+classmethod bytes.fromhex(string)
+bytes.hex()
+
+Bytearray Objects: mutable counterpart to bytes objects
+constructor ways:
+Creating an empty instance: bytearray()
+Creating a zero-filled instance with a given length: bytearray(10)
+Form an iterable of integers: bytearray(range(20))
+Copying existing binary data via a buffer protocol: bytearray(b'hello world')
+
+method:
+classmethod bytearray.fromhex(string)
+bytearray.hex()
+
+bytes and bytearray operations:
+bytes.count(sub[, start[, end]])
+bytearray.count(sub[, start[, end]])
+
+bytes.decode(encoding = 'utf-8', errors = 'strict')
+bytearray.decode(encoding = 'utf-8', errors = 'strict')
+
+bytes.startswith(prefix[, start[, end]])
+bytearray.startswith(prefix[, start[, end]])
+bytes.endswith(suffix[, start[, end]])
+bytearray.endswith(suffix[, start[, end]])
+
+bytes.find(sub[, start[, end]])
+bytearray.find(sub[, start[, end]])
+bytes.rfind(sub[, start[, end]])
+bytearray.rfind(sub[, start[, end]])
+
+bytes.index(sub[, start[, end]])
+bytearray.index(sub[, start[, end]])
+bytes.rindex(sub[, start[, end]])
+bytearray.rindex(sub[, start[, end]])
+==> Like find(), but raise ValueError when the subsequence is not found
+
+bytes.join(iterable)
+bytearray.join(iterable)
+
+bytes.partition(sep)
+bytearray.partition(sep)
+bytes.rpartition(sep)
+bytearray.rpartition(sep)
+
+bytes.replace(old, new[, count])
+bytearray.replace(old, new[, count])
+
+
+static bytes.maketrans(from, to)
+static bytearray.maketrans(from, to)
+bytes.translate(table[, delete])
+bytearray.translate(table[, delete])
+
+bytes.center(width[, fillbyte])
+bytearray.center(width[, fillbyte])
+
+bytes.ljust(width[, fillbyte])
+bytearray.ljust(width[, fillbyte])
+bytes.rjust(width[, fillbyte])
+bytearray.rjust(width[, fillbyte])
+
+bytes.strip([char])
+bytearray.strip([char])
+bytes.lstrip([char])
+bytearray.lstrip([char])
+bytes.rstrip([char])
+bytearray.rstrip([char])
+
+bytes.split(sep = None, maxsplit = -1)
+bytearray.split(sep = None, maxsplit = -1)
+bytes.rsplit(sep = None, maxsplit = -1)
+bytearray.rsplit(sep = None, maxsplit = -1)
+
+
+Memory Views: memoryview object allow Python code to access the internal data
+of an object that supports the buffer protocol without copying.
+constructor ways:
+class memoryview(obj): Python built-in object 'bytes' and 'bytearray'
+
+method:
+tobytes()
+hex()
+tolist()
+release()
+cast(format[, shape])
+obj:
+	b = bytearray(b'xyz')
+	m = memoryview(b)
+	m.obj is b -> True
+nbytes:
+readonly:
+format:
+itemsize:
+
+Set Types - set, frozenset
+class set([iterable])
+class frozenset([iterable])
+len(s)
+x in s
+x not in s
+isdisjoint(other)
+issubset(other)
+
+union(*others), set | others | ...
+intersection(*others), set & others & ...
+difference(*others), set - other - ...
+symmetric_difference(others), set ^ other
+
+copy()
+
+The following table list operations availablefor SET that do not apply to
+immutable instance of FROZENSET
+set method:
+update(*other), set |= other | ...
+intersection_update(*others), set &= other & ...
+difference_update, set -= other | ...
+symetric_difference_update(others), set ^= other
+
+add(elem)
+remove(elem)
+discard(elem)
+pop()
+clear()
+
+3. mappings Type - dict: mutable object
+constructor ways:
+class dict(**kwarg)
+class dict(mapping, **kwarg)
+class dict(iterable, **kwarg)
+
+method:
+len(d)
+d[key]
+d[key] = value
+del d[key]
+key in d
+key not in d
+iter(d)
+clear()
+copy()
+classmethod fromkeys(seq[, value])
+get(key[, default])
+items()
+keys()
+pop(key[, default])
+popitem()
+setdefault(key[, default])
+update([other])
+values()
+
+4. classes
+5. instances
+6. exceptions
+
+Truth Value Testing:
+1) None
+2) False
+3) zero of any numeric type
+4) any empty sequence
+5) any empty mapping
+6) instances of user-defined classes, if defines a __bool__ or __len__ method
+
+Special Attributes:
+object.__dict__
+instance.__class__ -> type like as list, dict, tuple and other
+class.__bases__
+definition.__name__
+definition.__qualname__
+class._mro__
+class.__subclasses__()
+
+
+type		mutable/immutable	example
+----		-----------------	-------
+str		immutable		'String'
+list		mutable			[elem0, elem1, elem2]
+tuple		immutable		(key, value)
+
+set		mutable			set(iterable)
+frozenset	immutable		like as set
+
+dict		mutable			{'key':'value', ...}	
+
+bytes		immutable		b'elemets'
+bytearray	mutable			bytearray(int/range()/obj->bytes)
+memoryview	mutable			memoryview(obj->bytes/bytearray)
